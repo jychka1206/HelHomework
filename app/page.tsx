@@ -792,30 +792,43 @@ export default async function Page() {
 
 	const navSections = grouped.map(g => ({ id: g.id, label: g.title }))
 
-	// Load timeline image
+	// Load timeline image - use public path instead of base64
 	const timelineImg = await (async () => {
 		const possibleNames = ['timeline.png', 'timeline.jpg', 'Timeline.png', 'Timeline.jpg']
 		for (const name of possibleNames) {
 			try {
-				const p = path.join(process.cwd(), 'sources', name)
-				const buf = await fs.readFile(p)
-				return `data:image/${name.endsWith('.jpg') ? 'jpeg' : 'png'};base64,${buf.toString('base64')}`
-			} catch {}
+				// Check if file exists in public/images
+				const publicPath = path.join(process.cwd(), 'public', 'images', name)
+				await fs.access(publicPath, fs.constants.F_OK)
+				return `/images/${name}`
+			} catch {
+				// Try sources folder as fallback
+				try {
+					const p = path.join(process.cwd(), 'sources', name)
+					await fs.access(p, fs.constants.F_OK)
+					return `/images/${name}`
+				} catch {}
+			}
 		}
 		return null
 	})()
 
-	// Load cover image
+	// Load cover image - use public path instead of base64
 	const coverImg = await (async () => {
 		const possibleNames = ['cover.png', 'cover.jpg', 'Cover.png', 'Cover.jpg']
 		for (const name of possibleNames) {
 			try {
-				const p = path.join(process.cwd(), 'sources', name)
-				const buf = await fs.readFile(p)
-				const ext = name.toLowerCase().endsWith('.jpg') ? 'jpeg' : 'png'
-				return `data:image/${ext};base64,${buf.toString('base64')}`
-			} catch (err) {
-				console.error(`Failed to load ${name}:`, err)
+				// Check if file exists in public/images
+				const publicPath = path.join(process.cwd(), 'public', 'images', name)
+				await fs.access(publicPath, fs.constants.F_OK)
+				return `/images/${name}`
+			} catch {
+				// Try sources folder as fallback
+				try {
+					const p = path.join(process.cwd(), 'sources', name)
+					await fs.access(p, fs.constants.F_OK)
+					return `/images/${name}`
+				} catch {}
 			}
 		}
 		return null
@@ -827,7 +840,7 @@ export default async function Page() {
 		if (timelineImg) {
 			grouped[timelineIdx].html = `<div class="mt-3"><img src="${timelineImg}" alt="Campaign Timeline" class="w-full h-auto rounded-xl" /></div>`
 		} else {
-			grouped[timelineIdx].html = '<p class="text-gray-500">Timeline image not found. Please add timeline.png or timeline.jpg to the sources folder.</p>'
+			grouped[timelineIdx].html = '<p class="text-gray-500">Timeline image not found. Please add timeline.png or timeline.jpg to the public/images folder.</p>'
 		}
 	}
 
@@ -840,13 +853,21 @@ export default async function Page() {
 
 	const artifactsImgs = await (async () => {
 		const names = ['artifact 1.png', 'artifact 2.png', 'artifact 3.png', 'artifact 4.png']
-		const results: { name: string; dataUrl: string }[] = []
+		const results: { name: string; src: string }[] = []
 		for (const n of names) {
 			try {
-				const p = path.join(process.cwd(), 'sources', n)
-				const buf = await fs.readFile(p)
-				results.push({ name: n, dataUrl: `data:image/png;base64,${buf.toString('base64')}` })
-			} catch {}
+				// Check if file exists in public/images
+				const publicPath = path.join(process.cwd(), 'public', 'images', n)
+				await fs.access(publicPath, fs.constants.F_OK)
+				results.push({ name: n, src: `/images/${n}` })
+			} catch {
+				// Try sources folder as fallback
+				try {
+					const p = path.join(process.cwd(), 'sources', n)
+					await fs.access(p, fs.constants.F_OK)
+					results.push({ name: n, src: `/images/${n}` })
+				} catch {}
+			}
 		}
 		return results
 	})()
@@ -878,10 +899,12 @@ export default async function Page() {
 					<div className="relative h-56 md:h-64">
 						{coverImg ? (
 							<div className="relative w-full h-full rounded-2xl overflow-hidden">
-								<img 
+								<Image 
 									src={coverImg} 
 									alt="Sleep Mode Campaign Cover" 
-									className="w-full h-full object-contain object-center rounded-2xl"
+									fill
+									className="object-contain object-center rounded-2xl"
+									priority
 								/>
 							</div>
 						) : (
@@ -914,7 +937,7 @@ export default async function Page() {
 										const frontContent = (
 											<figure className="rounded-xl border border-gray-100 h-full flex flex-col bg-white">
 												<div className="flex-1 flex items-center justify-center bg-gray-50 p-4" style={{ minHeight: '550px' }}>
-													<img src={a.dataUrl} alt={a.name} className="max-w-full max-h-full object-contain" style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }} />
+													<img src={a.src} alt={a.name} className="max-w-full max-h-full object-contain" style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }} />
 												</div>
 												<figcaption className="text-xs text-gray-500 px-3 py-2 flex-shrink-0">{a.name}</figcaption>
 											</figure>
@@ -926,10 +949,10 @@ export default async function Page() {
 											const combinedFront = (
 												<div className="rounded-xl border border-gray-100 h-full flex flex-row bg-white">
 													<div className="flex-1 flex items-center justify-center bg-gray-50 p-4" style={{ height: '100%' }}>
-														<img src={a.dataUrl} alt={a.name} className="max-w-full max-h-full object-contain" style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }} />
+														<img src={a.src} alt={a.name} className="max-w-full max-h-full object-contain" style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }} />
 													</div>
 													<div className="flex-1 flex items-center justify-center bg-gray-50 p-4" style={{ height: '100%' }}>
-														<img src={artifact4.dataUrl} alt={artifact4.name} className="max-w-full max-h-full object-contain" style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }} />
+														<img src={artifact4.src} alt={artifact4.name} className="max-w-full max-h-full object-contain" style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }} />
 													</div>
 												</div>
 											)
