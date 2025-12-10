@@ -330,11 +330,11 @@ const campaignStrategyContent = `
 
 <p class="mb-5 mt-6"><strong><em class="text-ink">Sample Messages for the Workshop</em></strong></p>
 
-<p class="mb-4"><em class="text-indigo-600">"We all have different screen-in-bed habits. Some feel fine, some feel stuck. Today is just a space to share and see what might help you feel better."</em></p>
+<p class="mb-4"><em class="text-indigo-600">"We all use our phones in different ways at night. Some feel fine, some feel stuck. Today is just a chill space to talk and share and see what might help you feel better."</em></p>
 
 <p class="mb-4">This message is designed for teens in the Precontemplation stage (assuming survey results indicate that such students exist). Precontemplation is the first stage in TTM's stages of change, where people do not intend to change, and may even resist it, in the near term (typically defined as within the next six months) (Conner & Norman, 2015). The reason behind this indifference or reluctance could be a lack of understanding of the consequences or frustration from repeated failures (Conner & Norman, 2015). This message, therefore, aims to comfort them and lower their defensiveness about reading, talking, or thinking about the behavior. It is positioned as nonjudgmental, open, and respectful of individual differences, and avoids pressuring them to take immediate action.</p>
 
-<p class="mb-4"><em class="text-indigo-600">"Sleep studies with teens your age show that when you stop using screens in bed before sleep, you fall asleep faster, sleep better, and usually feel less moody and more cheerful during the day, plus your brain is more likely to show up in class."</em></p>
+<p class="mb-4"><em class="text-indigo-600">"When you put your phone and other screens away before you go to sleep, you usually fall asleep faster, sleep better, feel less grumpy, and feel more awake in class the next day."</em></p>
 
 <p class="mb-4">This message presents research-backed facts that demonstrate the benefits of eliminating screen use in bed before sleep (Mireku et al., 2019; Mitchell & Nugiel, 2024)</p>
 
@@ -342,7 +342,7 @@ const campaignStrategyContent = `
 
 <p class="mb-4">Furthermore, the message is effective for teens in both the Precontemplation and Contemplation stages of the TTM, since the former requires facts to trigger awareness of the need for change and the latter needs stronger perceived consequences to shift the decisional balance (Prochaska et al., 2015).</p>
 
-<p class="mb-4"><em class="text-indigo-600">"Try to explore one simple, funny way you like, such as make a cozy "phone parking spot" where your devices sleep, or agree with friends to save chats and games for tomorrow morning. After a few nights, see if your sleep, mood, and focus level up."</em></p>
+<p class="mb-4"><em class="text-indigo-600">"You can start with one small, funny way you like. For example, you can make a cozy 'phone parking spot' where your devices go to sleep, or agree with friends to save chats and games for tomorrow morning. After a few nights, see if your sleep, mood, and focus level up."</em></p>
 
 <p class="mb-4">This message provides practical tips for behavior change, mainly targeting those in the Preparation stage (Prochaska et al., 2015). It is also developed following the key structure and constructs of SCT, including the effects of environment (the idea of "phone parking spot" that restructures the environment), self-efficacy (encouraging students to explore their own favorable ways of change), social support/norms (agree to support each other with peers), and outcome expectations (an expected improved sleep, mood, and focus) (Conner & Norman, 2015).</p>
 
@@ -352,7 +352,11 @@ const campaignStrategyContent = `
 
 <p class="mb-5 mt-6"><strong><em class="text-ink">Sample Messages for the Webinar</em></strong></p>
 
-<p class="mb-4"><em class="text-indigo-600">"Research shows that kids sleep earlier and longer when families have digital use rules and even the presence regardless of compliance of the rule matters. Children's screen habits often copy parents', so even one small rule you agree on together, like where phones charge at night, only use audio and no screens in our hands after getting into bed, can make change easier and feel fair. We prepared a <a href="/template" class="text-purple-500 hover:text-purple-700 hover:underline">template</a> for the family bedtime screen rule and you can collaborate with your kids to build it together."</em></p>
+<p class="mb-4"><em class="text-indigo-600">"Research shows that kids fall asleep earlier and sleep longer when families have rules about screens at night. Even just having a rule can help, even if it isn't followed perfectly every day. Kids often copy how their parents use phones and tablets, so even small rules you agree on can make a difference.</em></p>
+
+<p class="mb-4"><em class="text-indigo-600">You can start by agreeing on one thing at home, like where phones charge at night, or 'audio only, no screens in our hands after we get into bed.'</em></p>
+
+<p class="mb-4"><em class="text-indigo-600">We've prepared a short "family bedtime screen rule" <a href="/template" class="text-purple-500 hover:text-purple-700 hover:underline">template</a> that you can fill out together with your child."</em></p>
 
 <p class="mb-4">This message also draws on SCT in several ways. First, it targets the environmental and social context of behavior. Research on adolescent sleep demonstrates that family rules about technology are linked to children having earlier bedtimes and more total sleep time (Bowers & Moyer, 2019). While full compliance is associated with the best results, the mere presence of a rule also helps (Bowers & Moyer, 2019).</p>
 
@@ -447,7 +451,7 @@ Every student who submits a creative piece, and meets the 21-day completion crit
 
 <p class="mb-5 mt-6"><strong><em class="text-ink">Sample Messages for Both Challenges</em></strong></p>
 
-<p class="mb-4"><em class="text-indigo-600">"Try the 3-day screen-free-in-bed test drive. Log your nights, then share your best trick to cheer on your friends."</em></p>
+<p class="mb-4"><em class="text-indigo-600">"You can try the 3-day screen-free-in-bed test drive. Log your nights, then share your best trick to cheer on your friends."</em></p>
 
 <p class="mb-4"><em class="text-indigo-600">"Let's take this mini in-bed screen-free-in-bed challenge! Earn cool stuff just for giving it a try – and the real win? Waking up the next morning feeling like a nap wrapped in a smoothie."</em></p>
 
@@ -873,7 +877,7 @@ export default async function Page() {
 	})()
 
 	const artifactTexts: Record<string, string> = {
-		'artifact 1.png': 'This is a poster that can be taped in the campus. It shows a girl sleeping comfortably in bed while her devices are lying on a desk away from the bed.\n\nAlong the bottom of the poster, there is a row of tear-off tabs. Each tab has a short, teenager-friendly benefit of getting rid of screen use in bed. Students can tear off a tab to keep it or give it to a friend.\n\nThe content printed on each tab focuses on vivid, concrete, positive outcomes of the target behavior, which supports outcome expectations in SCT.\n\nThe tear-off format is designed to spark curiosity and attention. Also in this visible school setting, when seeing peers stop, read, and pull off tabs, more and more students will join organically. It is a great way to build perceived peer norms and trigger communications on the target behavior and the campaign.',
+		'artifact 1.png': 'This is a poster that can be displayed on campus. It features a person sleeping peacefully in bed, with their devices (phone, tablet, and game controller) placed on a nightstand nearby. Above the bed scene, colorful, aurora-like waves flow from the sleeping person, creating a dreamy and calming atmosphere.\n\nThe poster is titled "WITH NO SCREENS IN BED, I..." and lists seven benefits at the bottom, such as "fall asleep faster and deeper," "protect my eyes from blue light," "wake up less zombie," "feel my brain really brains," "fully load my social battery," "let my body & brain grow and rest," and "find my skin clear and smooth."\n\nThe content focuses on vivid, concrete, positive outcomes of the target behavior, which supports outcome expectations in SCT. The visual design with flowing colors and peaceful imagery creates an engaging and positive association with screen-free bedtime, making it an effective tool to build awareness and trigger conversations about the campaign.',
 		'artifact 2.png': 'This small "device parking lot" sticker is available for all students to take freely. We encourage students to place it in a fixed location at home. The goal is for them to leave their electronic devices there every night instead of taking them to bed.\n\nFrom a SCT perspective, the sticker works in two ways. First, it changes the home environment by clearly designating a device parking area and makes placing devices there an easier, default option. Second, it supports students\' self-regulation by helping them set a clear goal ("no screens in bed"), perform daily self-monitoring (checking if devices are parked), and experience self-reinforcement when they successfully follow the rule.',
 		'artifact 3.png': 'These are sample card and log for the No Screens in Bed challenges.\n\nAs explained above, the structure and questions in these challenges are guided by SCT and by principles of interpersonal communication.\n\nThey help students engage in self-monitoring and self-regulation, while also capturing emotions and reflections that are valuable for sharing and discussion. Eventually, students can learn from one another, feel supported, and strengthen their motivation and confidence in their efforts to change.'
 	}

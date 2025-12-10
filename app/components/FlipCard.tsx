@@ -22,8 +22,8 @@ export default function FlipCard({ front, back, className = '', showRipple = fal
 					<div className="ripple-animation"></div>
 					<div className="cursor-hint">
 						<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" fill="rgba(139, 92, 246, 0.9)" stroke="rgba(139, 92, 246, 1)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-							<circle cx="18" cy="8" r="2" fill="rgba(139, 92, 246, 0.9)"/>
+							<path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" fill="rgba(34, 197, 94, 0.9)" stroke="rgba(34, 197, 94, 1)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+							<circle cx="18" cy="8" r="2" fill="rgba(34, 197, 94, 0.9)"/>
 						</svg>
 					</div>
 				</>
